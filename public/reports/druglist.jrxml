@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="druglist" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d73352d7-02c8-46b5-83e7-27e1ecd268e1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     drugs.`id` AS drugs_id,
+     drugs.`name` AS drugs_name,
+     drugs.`generic_name` AS drugs_generic_name,
+     drugs.`supplier` AS drugs_supplier,
+     drugs.`brand` AS drugs_brand,
+     drugs.`stock` AS drugs_stock,
+     drugs.`buy_price` AS drugs_buy_price,
+     drugs.`sale_price` AS drugs_sale_price,
+     drugs.`unit_price` AS drugs_unit_price,
+     drugs.`is_active` AS drugs_is_active,
+     drugs.`expiry_date` AS drugs_expiry_date,
+     drugs.`status` AS drugs_status,
+     drugs.`store_box` AS drugs_store_box,
+     drugs.`created_by` AS drugs_created_by,
+     drugs.`created_on` AS drugs_created_on,
+     drugs.`last_updated_on` AS drugs_last_updated_on,
+     drugs.`last_updated_by` AS drugs_last_updated_by,
+     drugs.`stock_alert` AS drugs_stock_alert,
+     drugs.`reorder_status` AS drugs_reorder_status,
+     drugs.`classification` AS drugs_classification,
+     drugs.`barcode` AS drugs_barcode
+FROM
+     `drugs` drugs
+order by drugs.`name`]]>
+	</queryString>
+	<field name="drugs_id" class="java.lang.Long"/>
+	<field name="drugs_name" class="java.lang.String"/>
+	<field name="drugs_generic_name" class="java.lang.String"/>
+	<field name="drugs_supplier" class="java.lang.String"/>
+	<field name="drugs_brand" class="java.lang.String"/>
+	<field name="drugs_stock" class="java.lang.Integer"/>
+	<field name="drugs_buy_price" class="java.math.BigDecimal"/>
+	<field name="drugs_sale_price" class="java.math.BigDecimal"/>
+	<field name="drugs_unit_price" class="java.math.BigDecimal"/>
+	<field name="drugs_is_active" class="java.lang.String"/>
+	<field name="drugs_expiry_date" class="java.sql.Timestamp"/>
+	<field name="drugs_status" class="java.lang.String"/>
+	<field name="drugs_store_box" class="java.lang.String"/>
+	<field name="drugs_created_by" class="java.lang.String"/>
+	<field name="drugs_created_on" class="java.sql.Date"/>
+	<field name="drugs_last_updated_on" class="java.sql.Timestamp"/>
+	<field name="drugs_last_updated_by" class="java.lang.String"/>
+	<field name="drugs_stock_alert" class="java.lang.Integer"/>
+	<field name="drugs_reorder_status" class="java.lang.Integer"/>
+	<field name="drugs_classification" class="java.lang.String"/>
+	<field name="drugs_barcode" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<image>
+				<reportElement x="352" y="10" width="189" height="61" uuid="b67d286b-2aa9-45ca-9728-d2b1922ebc46"/>
+				<imageExpression><![CDATA["gileadlogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="11" y="10" width="309" height="20" uuid="ef79269d-be88-49d6-86cc-1e8adf431a6f"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[List of Available Drugs]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="87" height="20" uuid="eb826e96-cc0a-4d3c-84ae-11ecb6340a4e"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Drug Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="0" width="88" height="20" uuid="10560f6a-21b5-406e-a932-6d5559c12b4e"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Generic Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="0" width="100" height="20" uuid="4fae578a-8d3d-4b22-aa59-b38a42041037"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Classification]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="0" width="80" height="20" uuid="bc3f8f96-a56c-4dc8-8a85-7531d676a016"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Supplier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="0" width="74" height="20" uuid="ee41df9b-0464-4385-aa4f-a30769cd7e01"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Brand]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="55" height="20" uuid="9ad916a3-1880-41d7-959e-3f32281d355a"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Expiry Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="30" y="0" width="87" height="20" uuid="8539568a-db26-4068-a50c-ea6b00ad80dd"/>
+				<textElement>
+					<font fontName="SansSerif" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{drugs_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="123" y="0" width="88" height="20" uuid="7e31633a-fd07-4b33-92d5-34fffdd689bf"/>
+				<textElement>
+					<font fontName="SansSerif" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{drugs_generic_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="219" y="0" width="100" height="20" uuid="89dcf82d-fc10-44d9-a437-10069c4b6240"/>
+				<textElement>
+					<font fontName="SansSerif" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{drugs_classification}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="328" y="0" width="80" height="20" uuid="ec83838f-96a7-4725-a82b-41b8ec9c18ba"/>
+				<textElement>
+					<font fontName="SansSerif" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{drugs_supplier}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="416" y="0" width="74" height="20" uuid="f49c0933-71e8-4ad0-a604-72576f2d30d6"/>
+				<textElement>
+					<font fontName="SansSerif" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{drugs_brand}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy" isBlankWhenNull="true">
+				<reportElement x="500" y="0" width="55" height="20" uuid="b25935cb-3dec-435b-b046-02d97787b1f6"/>
+				<textElement>
+					<font fontName="SansSerif" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{drugs_expiry_date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="25" width="555" height="1" uuid="9523ed7a-5fbd-42e0-aec8-0c27d5b445b5"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="20" height="20" uuid="6298de32-6aab-4825-b0be-4a020d2ebd8e"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

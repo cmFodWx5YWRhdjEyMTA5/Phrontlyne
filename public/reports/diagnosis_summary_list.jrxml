@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="diagnosis_summary_list" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="637dc83b-ca5e-46ce-926f-ee8677ebf275">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="start_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="end_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     diagnosis_summary.`opd_number` AS diagnsis_summary_opd_number,
+     diagnosis_summary.`name` AS diagnsis_summary_name,
+     diagnosis_summary.`diagnosis` AS diagnsis_summary_diagnosis,
+     diagnosis_summary.`date` AS diagnsis_summary_date,
+     diagnosis_summary.`opd_number` AS diagnosis_summary_opd_number,
+     diagnosis_summary.`name` AS diagnosis_summary_name,
+     diagnosis_summary.`diagnosis` AS diagnosis_summary_diagnosis,
+     diagnosis_summary.`date` AS diagnosis_summary_date,
+     diagnosis_summary.`payercode` AS diagnosis_summary_payercode,
+     diagnosis_summary.`created_by` AS diagnosis_summary_created_by
+FROM
+     `diagnosis_summary` diagnosis_summary
+WHERE
+     (date BETWEEN $P{start_date} and $P{end_date})
+order by  diagnosis_summary.`date`]]>
+	</queryString>
+	<field name="diagnsis_summary_opd_number" class="java.lang.String"/>
+	<field name="diagnsis_summary_name" class="java.lang.String"/>
+	<field name="diagnsis_summary_diagnosis" class="java.lang.String"/>
+	<field name="diagnsis_summary_date" class="java.sql.Timestamp"/>
+	<field name="diagnosis_summary_opd_number" class="java.lang.String"/>
+	<field name="diagnosis_summary_name" class="java.lang.String"/>
+	<field name="diagnosis_summary_diagnosis" class="java.lang.String"/>
+	<field name="diagnosis_summary_date" class="java.sql.Timestamp"/>
+	<field name="diagnosis_summary_payercode" class="java.lang.String"/>
+	<field name="diagnosis_summary_created_by" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="26" width="28" height="20" uuid="34d6ba8f-9393-42f0-a6a8-005d3a07a67c"/>
+				<textElement>
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From :]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="72" y="46" width="250" height="20" uuid="a1daf37c-f936-4c81-9cd6-7be7c01508b8"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{end_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="46" width="28" height="20" uuid="9d012677-9c16-42b9-a875-337f7c912aa9"/>
+				<textElement>
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To :]]></text>
+			</staticText>
+			<image>
+				<reportElement x="555" y="6" width="189" height="61" uuid="136a9759-8675-4721-8fa0-68919e942178"/>
+				<imageExpression><![CDATA["gileadlogo.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="72" y="26" width="250" height="20" uuid="bc50d57e-fd54-4dc3-8a24-231cacedc5b1"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{start_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="6" width="309" height="20" uuid="0582fecb-d809-4d92-8a2e-e30e249d5fca"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Confidential Morbidity Report  Summary By Visit]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="5" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="0" width="100" height="20" uuid="e7cfd3df-6a2d-4a6c-89f6-ff543288e068"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Visit #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="4" width="217" height="20" uuid="3c42d9d5-5996-4507-8985-ca6f9ec9378c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnosis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="386" y="0" width="100" height="20" uuid="f7b78ca2-dafe-4d10-9fb0-76006b59bd8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date Diagnosed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="532" y="0" width="192" height="20" uuid="a2e3f86b-1ed1-47da-b012-2e1ca89aeea9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnosed By]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="6" width="100" height="20" uuid="50525d0f-8195-4788-85cd-d0cf1834a1a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosis_summary_opd_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="6" width="217" height="20" uuid="adeb665a-a9b4-4809-8eae-ccbf04af7610"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosis_summary_diagnosis}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="386" y="6" width="100" height="20" uuid="d9ed17b5-477c-466f-b54d-3d10f27224e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosis_summary_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="532" y="6" width="192" height="20" uuid="99abd8c3-4029-4a0f-9971-c52a37f2d868"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosis_summary_created_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="6" width="28" height="20" uuid="ef0c9749-29a3-46c5-954b-ab37a56aad84"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="39" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="674" y="7" width="80" height="20" uuid="bbe0b2a1-f7e6-4cde-aeb0-4ed05be742d1"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="754" y="7" width="40" height="20" uuid="67fe7bf1-14d8-431f-b1a1-f435ab646866"/>
+				<textElement>
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="263" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="802" height="263" uuid="5725ce4c-4881-411c-8c59-449ac40f5e8c"/>
+				<rowGroup name="diagnosis_summary_created_by" width="114" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{diagnosis_summary_created_by}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="114" height="25" uuid="42f4f894-ca37-4b05-bc7a-8f7652402cdc"/>
+								<textElement>
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{diagnosis_summary_created_by}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="140" height="25" forecolor="#FFFFFF" uuid="209d8150-776e-4ba0-ada7-d38ea6a9a411"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[Total ]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="diagnosis_summary_diagnosis" width="145" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{diagnosis_summary_diagnosis}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="145" height="25" uuid="c3bb7deb-27e4-4a26-aa23-9903e39b1650"/>
+								<textElement>
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{diagnosis_summary_diagnosis}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="145" height="25" uuid="909c7317-aa13-411f-944f-29211523d1a1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[Total diagnosis_summary_diagnosis]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="diagnosis_summary_payercode" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{diagnosis_summary_payercode}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="30" uuid="21fc6ee3-67be-4a02-8157-0769cf0c6075"/>
+								<textElement>
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{diagnosis_summary_payercode}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="30" uuid="b559e724-1fa2-413e-8551-bada4b46dee5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[Total ]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="diagnsis_summary_diagnosisMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{diagnsis_summary_diagnosis}]]></measureExpression>
+				</measure>
+				<crosstabCell width="70" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="b20a657d-7624-49a7-99eb-0cb3f1a197bb"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{diagnsis_summary_diagnosisMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="70" height="25" rowTotalGroup="diagnosis_summary_created_by">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" forecolor="#FFFFFF" uuid="eb167994-29a2-437d-92a5-df08a19f1c6e"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{diagnsis_summary_diagnosisMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="diagnosis_summary_payercode">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="2004e5e4-3d38-40f0-b89d-353599f544b0"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{diagnsis_summary_diagnosisMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="diagnosis_summary_created_by" columnTotalGroup="diagnosis_summary_payercode">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="61b72dea-91f1-4260-a82e-4d77e15521b6"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{diagnsis_summary_diagnosisMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="70" height="25" rowTotalGroup="diagnosis_summary_diagnosis">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="a4c146d0-fc7f-45f2-86e5-fe948a7ae52a"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{diagnsis_summary_diagnosisMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="diagnosis_summary_diagnosis" columnTotalGroup="diagnosis_summary_payercode">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="7455e55e-e71f-41e5-a111-c86c1cf90d68"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{diagnsis_summary_diagnosisMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

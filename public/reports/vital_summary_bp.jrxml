@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vital_summary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8abcc579-165e-4f68-8035-d071f3978e5e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="start_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="end_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     vital_summary.`opd_number` AS vital_summary_opd_number,
+     vital_summary.`name` AS vital_summary_name,
+     vital_summary.`consultation_type` AS vital_summary_consultation_type,
+     vital_summary.`bmi` AS vital_summary_bmi,
+     vital_summary.`bmi_status` AS vital_summary_bmi_status,
+     vital_summary.`temperature` AS vital_summary_temperature,
+     vital_summary.`temp_status` AS vital_summary_temp_status,
+     vital_summary.`bpreading` AS vital_summary_bpreading,
+     vital_summary.`bp_status` AS vital_summary_bp_status,
+     vital_summary.`created_on` AS vital_summary_created_on
+FROM
+     `vital_summary` vital_summary
+where
+    (created_on BETWEEN $P{start_date} and $P{end_date})]]>
+	</queryString>
+	<field name="vital_summary_opd_number" class="java.lang.String"/>
+	<field name="vital_summary_name" class="java.lang.String"/>
+	<field name="vital_summary_consultation_type" class="java.lang.String"/>
+	<field name="vital_summary_bmi" class="java.math.BigDecimal"/>
+	<field name="vital_summary_bmi_status" class="java.lang.String"/>
+	<field name="vital_summary_temperature" class="java.math.BigDecimal"/>
+	<field name="vital_summary_temp_status" class="java.lang.String"/>
+	<field name="vital_summary_bpreading" class="java.lang.String"/>
+	<field name="vital_summary_bp_status" class="java.lang.String"/>
+	<field name="vital_summary_created_on" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="8" width="309" height="20" uuid="57939658-910d-4544-9164-14805296f829"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vital BP Status Summary By Visit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="28" width="28" height="20" uuid="72a1e1e5-a471-4daa-bba3-9672e2a1616c"/>
+				<textElement>
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From :]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="72" y="28" width="250" height="20" uuid="918fad87-58a5-456a-bd34-9131a9411da8"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{start_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="48" width="28" height="20" uuid="c279d341-38f6-4c45-8d16-4d7a1389e0d7"/>
+				<textElement>
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To :]]></text>
+			</staticText>
+			<image>
+				<reportElement x="354" y="8" width="189" height="61" uuid="9a690619-8547-40ce-bfad-ad34efbb7d1c"/>
+				<imageExpression><![CDATA["gileadlogo.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="72" y="48" width="250" height="20" uuid="61be8f5c-1226-4bcc-b33c-e7f633829b23"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{end_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="3" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="3" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="3" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="2" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="309" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="555" height="309" uuid="5012288f-899a-4ff3-a00f-ac06842d902b"/>
+				<rowGroup name="vital_summary_consultation_type" width="196" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{vital_summary_consultation_type}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="196" height="25" uuid="d5789172-8e97-450e-b8e3-d19e0cd9ac38"/>
+								<textElement>
+									<font size="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{vital_summary_consultation_type}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="196" height="25" uuid="ea100af2-e713-4133-b1ea-ebd36a690a84"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[Total ]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="vital_summary_bp_status" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{vital_summary_bp_status}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="60" height="30" uuid="7e4bc864-ad56-45ea-af04-467de46dbe41"/>
+								<textElement>
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{vital_summary_bp_status}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="64" height="30" uuid="48fd8a4b-bf2d-4a3b-8cc4-032dc519ad17"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[Total ]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="vital_summary_bpreadingMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{vital_summary_bpreading}]]></measureExpression>
+				</measure>
+				<crosstabCell width="62" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="60" height="25" uuid="110fa0b0-ba7f-4499-b737-3a8d3b5a53d3"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{vital_summary_bpreadingMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" height="25" rowTotalGroup="vital_summary_consultation_type">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="60" height="25" uuid="ce374ad1-1cbc-4374-a6ea-71f9cc74fa56"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{vital_summary_bpreadingMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="64" height="25" columnTotalGroup="vital_summary_bp_status">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="64" height="25" uuid="a357acf2-dc2a-44e3-a8df-f0942d5299d1"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{vital_summary_bpreadingMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="64" rowTotalGroup="vital_summary_consultation_type" columnTotalGroup="vital_summary_bp_status">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="64" height="25" uuid="dfacd5e8-f0f0-400e-9f11-3d025e9d3c42"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{vital_summary_bpreadingMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

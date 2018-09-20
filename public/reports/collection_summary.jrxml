@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="collection_summary" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa49f91b-014b-4adc-8436-e52fddbefb1c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.reportUnit" value="/orionmedical/collection_summary"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver/services/repository"/>
+	<parameter name="start_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="end_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     collection_summary.`patient_id` AS collection_summary_patient_id,
+     collection_summary.`visit_id` AS collection_summary_visit_id,
+     collection_summary.`fullname` AS collection_summary_fullname,
+     collection_summary.`item_name` AS collection_summary_item_name,
+     collection_summary.`cost` AS collection_summary_cost,
+     collection_summary.`AmountReceived` AS collection_summary_AmountReceived,
+     collection_summary.`note` AS collection_summary_note,
+     collection_summary.`PaymentMethod` AS collection_summary_PaymentMethod,
+     collection_summary.`RefNumber` AS collection_summary_RefNumber,
+     collection_summary.`created_by` AS collection_summary_created_by,
+     collection_summary.`payday` AS collection_summary_date,
+     collection_summary.`paymentid` AS collection_summary_paymentid,
+     collection_summary.`category` AS collection_summary_category
+FROM
+     `collection_summary` collection_summary
+where
+    (collection_summary.`payday` BETWEEN $P{start_date} and $P{end_date})
+order by collection_summary.`payday`]]>
+	</queryString>
+	<field name="collection_summary_patient_id" class="java.lang.String"/>
+	<field name="collection_summary_visit_id" class="java.lang.String"/>
+	<field name="collection_summary_fullname" class="java.lang.String"/>
+	<field name="collection_summary_item_name" class="java.lang.String"/>
+	<field name="collection_summary_cost" class="java.math.BigDecimal"/>
+	<field name="collection_summary_AmountReceived" class="java.math.BigDecimal"/>
+	<field name="collection_summary_note" class="java.lang.String"/>
+	<field name="collection_summary_PaymentMethod" class="java.lang.String"/>
+	<field name="collection_summary_RefNumber" class="java.lang.String"/>
+	<field name="collection_summary_created_by" class="java.lang.String"/>
+	<field name="collection_summary_date" class="java.sql.Timestamp"/>
+	<field name="collection_summary_paymentid" class="java.lang.String"/>
+	<field name="collection_summary_category" class="java.lang.String"/>
+	<variable name="payabletotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{collection_summary_cost}]]></variableExpression>
+	</variable>
+	<variable name="paidtotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{collection_summary_AmountReceived}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="70" y="28" width="250" height="20" uuid="f5b866ac-3f81-4d74-86ed-f9b245785932"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{start_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="28" width="28" height="20" uuid="fa516d9e-733d-424f-8bce-bf07c884d8e8"/>
+				<textElement>
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="8" width="309" height="20" uuid="7ec8c28e-5868-4e96-9296-d8e9eae9a8f8"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Collections Summary]]></text>
+			</staticText>
+			<image>
+				<reportElement x="568" y="8" width="189" height="71" uuid="a47376f4-e23c-4953-b48e-83d1ec3ff844"/>
+				<imageExpression><![CDATA["repo:gileadlogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="10" y="48" width="28" height="20" uuid="c577b944-9eff-4918-b0a1-8e32fe8ae02d"/>
+				<textElement>
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To :]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="70" y="48" width="250" height="20" uuid="15663487-b82a-4435-ad0d-e8fcdcebcd4d"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{end_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="3" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="c183382b-cd59-4ec7-bbf5-ae3486f33672"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Visit #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="0" width="100" height="20" uuid="e31508fa-a3e9-4bb0-8072-1555219b525d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name of Client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="0" width="100" height="20" uuid="89cf3c2f-067a-4c1b-ae31-fc860e3a5c5f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Items Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="0" width="100" height="20" uuid="5f359354-e50e-4a77-a26f-b93af177e490"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="0" width="100" height="20" uuid="b3eda172-8dfa-4b96-b864-2c7d8b19a2b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="540" y="0" width="100" height="20" uuid="faba1193-141c-4d6b-961f-edae27ea1cf0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receipt #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="695" y="0" width="100" height="20" uuid="a4e9460b-7b2f-4bde-ad57-b979ac2bf0ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date of Payment]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="4" width="100" height="20" uuid="2868d642-e931-418a-95c6-de975006fd39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{collection_summary_visit_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="4" width="100" height="20" uuid="9d1bf667-7df7-4faa-b001-1f1d779a77ef"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{collection_summary_fullname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="4" width="100" height="45" uuid="b76676e4-1ab8-4be6-a416-8fa690ca215e"/>
+				<textElement verticalAlignment="Top">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{collection_summary_item_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="323" y="4" width="100" height="20" uuid="412f837f-b771-45e4-9c27-6cbbf3f425eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{collection_summary_cost}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="429" y="4" width="100" height="20" uuid="9d25e65a-b0d1-4381-ae6f-aa3d45721603"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{collection_summary_AmountReceived}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="540" y="4" width="100" height="20" uuid="5c7bf1c0-0970-4deb-8e67-7db1bb997618"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{collection_summary_paymentid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="695" y="4" width="100" height="20" uuid="42347bd5-8fdf-45ec-9d52-0de052f81ceb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{collection_summary_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="674" y="7" width="80" height="20" uuid="de50c766-5ee0-426c-bd15-bf9af8a60fab"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="754" y="7" width="40" height="20" uuid="5a5eb76d-46e4-45b3-ba0d-c4d580e005bf"/>
+				<textElement>
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="7" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="429" y="0" width="111" height="20" uuid="33d8862e-4395-4e2a-8923-d3de6f9b3109"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{paidtotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="313" y="0" width="100" height="20" uuid="40e72123-ace1-4bc3-b645-7b988406cf63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{payabletotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

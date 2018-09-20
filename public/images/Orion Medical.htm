@@ -1,0 +1,1984 @@
+
+<!-- saved from url=(0038)http://localhost:8000/opd-consultation -->
+<html lang="en" class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head><body><div class="modal fade" id="review-patient" size="600">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">OPD Patient Information<span id="selectedName"></span></h4>
+        </div>
+        <div class="modal-body">
+          <p></p>
+                      <section class="vbox">
+                    <header class="header bg-light bg-gradient">
+                      <ul class="nav nav-tabs nav-white">
+
+                        <li class="active"><a href="http://localhost:8000/opd-consultation#details" data-toggle="tab">Patient Details</a></li>
+                        <li><a href="http://localhost:8000/opd-consultation#imaging" data-toggle="tab"> Images &amp; Documents</a></li>
+                      </ul>
+                    </header>
+                    <section class="scrollable">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="details">
+                            <form class="bootstrap-modal-form" method="post" action="http://localhost:8000/process-consultation">
+                          <section class="panel panel-default">
+                      <div class="panel-body">
+                       
+                        <div class="clearfix m-b">
+
+                          <a href="http://localhost:8000/opd-consultation#" class="thumb-lg">
+                            <img src="http://localhost:8000/opd-consultation" name="imagePreview" id="imagePreview" class="img-circle">
+                          </a>
+                          
+                        </div>
+                        
+                        <div class="form-group pull-in clearfix">
+                          <div class="col-sm-6">
+                            <label>Patient Number</label> 
+                            <div class="form-group">
+                            <input type="text" rows="3" class="form-control" id="patient_id" readonly="true" name="patient_id" value="">   
+                               
+                          </div>
+                          </div>
+
+                          <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Account Type</label>
+                            <input type="text" rows="3" class="form-control" id="accounttype" readonly="true" name="accounttype" value="">          
+                               
+                          </div>   
+                        </div>
+                        </div>
+
+
+                        <div class="form-group">
+                         <div class="form-group">
+                          <label>Name </label>
+                          <input type="text" class="form-control" id="fullname" readonly="true" value="" name="fullname">
+                                                  
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                         <div class="form-group">
+                          <label>Consultation Type </label>
+                          <input type="text" class="form-control" id="consultation_title" placeholder="Please enter title of review" value="" readonly="true" name="consultation_title">
+                                                  
+                        </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                       
+
+                       <section class="panel panel-default">
+                    <header class="panel-heading bg-light">
+                      <ul class="nav nav-tabs pull-left">
+                        
+                                               <li><a href="http://localhost:8000/opd-consultation#vital-signs" data-toggle="tab"><i class="fa fa-clock-o text-default"></i> Vitals  </a></li>
+                                             </ul>
+                      <span class="hidden-sm">.</span>
+                    </header>
+                    <div class="panel-body">
+                      <div class="tab-content">              
+                       
+                            
+                      
+                      
+                                                     
+                      
+                       
+                                              
+
+                        
+
+
+                      
+                       
+                     
+                                            
+
+
+
+                        <div class="tab-pane active" id="vital-signs">
+                         <div class="form-group pull-in clearfix">
+
+                         <div class="col-sm-6">
+                               <div class="form-group{{ $errors-&gt;has(&#39;weight&#39;) ? &#39; has-error&#39; : &#39;&#39;); ?&gt;">
+                            <label>Weight ( kg )</label>
+                             <input type="text" rows="3" class="form-control" id="weight" name="weight" value="">   
+                               
+                          </div> 
+                          </div>   
+                          <div class="col-sm-6">
+                            <label>Height ( m )</label> 
+                            <input type="text" rows="3" class="form-control" id="height" name="height" value="">   
+                          </div>
+                          
+                        </div>
+
+
+                         <div class="form-group pull-in clearfix">
+                          <div class="col-sm-6">
+                            <label>Temperature ( C )</label> 
+                            <input type="text" rows="3" class="form-control" id="temperature" name="temperature" value="">   
+                          </div>
+
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                            <label>BP ( mm of Hg )</label>
+                            <input type="text" rows="3" class="form-control" id="blood_pressure" name="blood_pressure" value="">  
+                               
+                          </div> 
+                          </div>   
+                        </div>
+
+                         <div class="form-group pull-in clearfix">
+                            <div class="col-sm-6">
+                            <label>Pulse Rate ( / min )</label> 
+                            <input type="text" rows="3" class="form-control" id="pulse_rate" name="pulse_rate" value="">   
+                          </div>
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                            <label>Respiration ( / min )</label>
+                            <input type="text" rows="3" class="form-control" id="respiration" name="respiration" value="">  
+                               
+                          </div> 
+                          </div>   
+                        </div>
+
+                        <div class="form-group pull-in clearfix">
+                            <div class="col-sm-6">
+                            <label> Waist Circumference </label> 
+                            <input type="text" rows="3" class="form-control" id="waist_circumference" name="waist_circumference" value="">   
+                          </div>
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                            <label> Hip Circumference </label>
+                            <input type="text" rows="3" class="form-control" id="hip_circumference" name="hip_circumference" value="">  
+                               
+                          </div> 
+                          </div>   
+                        </div>
+
+                        <div class="form-group pull-in clearfix">
+                            <div class="col-sm-6">
+                            <label> Frame </label> 
+                            <input type="text" rows="3" class="form-control" id="frame" name="frame" value="">   
+                          </div>
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                            <label> B Fat </label>
+                            <input type="text" rows="3" class="form-control" id="b_fat" name="b_fat" value="">  
+                               
+                          </div> 
+                          </div>   
+                        </div>
+
+                        <div class="form-group pull-in clearfix">
+                            <div class="col-sm-6">
+                            <label> V Fat </label> 
+                            <input type="text" rows="3" class="form-control" id="v_fat" name="v_fat" value="">   
+                          </div>
+                          <div class="col-sm-6">
+                               <div class="form-group">
+                            <label> Water </label>
+                            <input type="text" rows="3" class="form-control" id="water" name="water" value="">  
+                               
+                          </div> 
+                          </div>   
+                        </div>
+                        
+                         <footer class="panel-footer text-right bg-light lter">
+                        <button type="button" onclick="addVitals()" class="btn btn-success btn-s-xs">Save</button>
+                      </footer>
+
+                        </div>
+
+                              
+                                                                             
+                    </div>
+                  </div></section>
+
+                        
+                      </div>
+                     
+                      <footer class="panel-footer text-right bg-light lter">
+                       
+                         <input type="hidden" name="opd_number" id="opd_number" value="">                
+                      </footer>
+                    </section>
+
+
+
+                        <input type="hidden" name="_token" value="YY3wzbwiLWp0ZZrOj0duvQMqwFwsN2YRGS5g9236">
+                      </form>
+                        </div>
+                          <div class="tab-pane" id="imaging">
+                          
+                        </div>
+                    
+                      </div>
+                    </section>
+                  </section>
+        </div>
+        
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+
+    
+
+   
+ <script>
+
+function getAge()
+{
+
+    $.get('/patient-age-occupation',
+        {
+
+          "id": $('#patient_id').val()
+         
+        },
+        function(data)
+        { 
+          
+          $.each(data, function (key, value) {
+        
+          //sweetAlert("Employee SSF : ", data["employeessf"], "info");
+           $('#age').val(data.age);
+           $('#occupation').val(data.occupation);
+           $('#accounttype').val(data.accounttype);
+       
+      });
+                                        
+        },'json');
+  
+}
+
+var account_no = null;
+function getDetails(visitid,patientid)
+{ 
+
+  $.get("/opd-details",
+          {
+            "opd_number" : visitid
+            
+          },
+          function(json)
+          {
+
+                //alert(json.haha);
+                $('#review-patient input[name="patient_id"]').val(json.patient_id);
+                $('#review-patient input[name="fullname"]').val(json.fullname);
+                $('#review-patient input[name="opd_number"]').val(json.opd_number);
+                $('#review-patient input[name="pulse_rate"]').val(json.pulse_rate);
+                $('#review-patient input[name="blood_pressure"]').val(json.blood_pressure);
+                $('#review-patient input[name="respiration"]').val(json.respiration);
+                $('#review-patient input[name="height"]').val(json.bmi_height);
+                $('#review-patient input[name="weight"]').val(json.bmi_weight);
+                $('#review-patient input[name="temperature"]').val(json.temperature);
+                $('#review-patient input[name="bmi"]').val(json.bmi_weight/(json.bmi_height*json.bmi_height));
+                $('#review-patient input[name="consultation_title"]').val(json.consultant_doctor);
+                $('#review-patient select[name="complaint"]').select2();
+                $('#review-patient select[name="investigation"]').select2();
+                $('#review-patient select[name="diagnosis"]').select2();
+                $('#review-patient select[name="diagnosis_category"]').select2();
+                $('#review-patient select[name="procedure"]').select2();
+                $('#review-patient select[name="medication"]').select2();
+                $('#review-patient select[name="drug_quantity"]').select2();
+                $('#review-patient select[name="history"]').select2();
+                $('#review-patient select[name="drug_frequency"]').select2();
+                $('#review-patient select[name="drug_dosage"]').select2();
+                $('#review-patient select[name="drug_application"]').select2();
+                $('#review-patient select[name="drug_days"]').select2();
+                $('#review-patient select[name="drug_period"]').select2();
+                $('#review-patient input[name="selectedid"]').val(json.patient_id);
+
+                $('#review-patient img[name="imagePreview"]').attr("src", '/images/'+json.patient_id+'.jpg');
+                $('#review-patient a[name="visitid"]').attr("href", '/print-prescription/'+json.opd_number);
+                loadMedication();
+                loadComplaints();
+                loadInvestigation();
+                loadDiagnosis();
+                loadProcedure();
+                loadHistory();
+                getAge();
+                loadDocumentDetail();
+
+          },'json').fail(function(msg) {
+          alert(msg.status + " " + msg.statusText);
+        });
+
+}
+
+
+function addComplaint()
+{
+if($('#complaint').val()!= "")
+{
+
+    $.get('/add-complaint',
+        {
+          "opd_number": $('#opd_number').val(),
+          "complaint": $('#complaint').val(),
+          "com_period": $('#com_period').val(),
+          "com_span":  $('#com_span').val()                      
+        },
+        function(data)
+        { 
+          
+          $.each(data, function (key, value) {
+        if(data["OK"])
+        {
+          sweetAlert("Complaint has been added!");
+          loadComplaints();
+        }
+        else
+        {
+          sweetAlert("Complaint failed to be added!");
+        }
+      });
+                                        
+        },'json');
+  }
+  else
+    {sweetAlert("Please add a complaint!");}
+}
+
+function addDrug()
+{
+if($('#medication').val()!= "" && $('#drug_quantity').val()!="")
+{
+
+    $.get('/add-medication',
+        {
+          "patient_id": $('#patient_id').val(),
+          "opd_number": $('#opd_number').val(),
+          "medication": $('#medication').val(),
+          "fullname":  $('#fullname').val(),
+          "drug_quantity": $('#drug_quantity').val(),
+          "drug_dosage": $('#drug_dosage').val(),
+          "drug_application": $('#drug_application').val(),
+          "drug_frequency": $('#drug_frequency').val(),
+          "drug_days": $('#drug_days').val(),
+          "drug_span": $('#drug_span').val()                      
+        },
+        function(data)
+        { 
+          
+          $.each(data, function (key, value) {
+        if(data["OK"])
+        {
+          sweetAlert("Drug has been forwarded to pharmacy!");
+          loadMedication();
+        }
+        else
+        {
+          sweetAlert("Drug failed to be added!");
+        }
+      });
+                                        
+        },'json');
+  }
+  else
+    {sweetAlert("Please select a drug!");}
+}
+
+function addVitals()
+{
+if($('#weight').val()!= "" && $('#height').val()!="")
+{
+
+    $.get('/add-vitals',
+        {
+          "patient_id": $('#patient_id').val(),
+          "opd_number": $('#opd_number').val(),
+          "weight": $('#weight').val(),
+          "height": $('#height').val(),
+          "waist_circumference": $('#waist_circumference').val(),
+          "hip_circumference":  $('#hip_circumference').val(),
+          "frame": $('#frame').val(),
+          "b_fat": $('#b_fat').val(),
+          "v_fat": $('#v_fat').val(),
+          "pulse_rate": $('#pulse_rate').val(),
+          "blood_pressure": $('#blood_pressure').val(),
+          "respiration": $('#respiration').val(),
+          "temperature": $('#temperature').val()                      
+        },
+        function(data)
+        { 
+          
+          $.each(data, function (key, value) {
+        if(data["OK"])
+        {
+          sweetAlert("Vital parameters added!");
+        }
+        else
+        {
+          sweetAlert("Vital parameters failed to be added!");
+        }
+      });
+                                        
+        },'json');
+  }
+  else
+    {sweetAlert("Please enter weight and height!");}
+}
+
+function addInvestigation()
+{
+if($('#investigation').val()!= "")
+{
+
+    $.get('/add-investigation',
+        {
+          "patient_id": $('#patient_id').val(),
+          "opd_number": $('#opd_number').val(),
+          "investigation": $('#investigation').val(),
+          "fullname":  $('#fullname').val()                      
+        },
+        function(data)
+        { 
+          
+          $.each(data, function (key, value) {
+        if(data["OK"])
+        {
+          sweetAlert("Investigation has been forwarded to Lab!");
+          loadInvestigation();
+          $('#investigation').val()!= ""
+        }
+        else
+        {
+          sweetAlert("Investigation failed to be added!");
+        }
+      });
+                                        
+        },'json');
+  }
+  else
+    {sweetAlert("Please select an Investigation!");}
+}
+
+function addProcedure()
+{
+if($('#procedure').val()!= "")
+{
+
+    $.get('/add-procedure',
+        {
+          "patient_id": $('#patient_id').val(),
+          "opd_number": $('#opd_number').val(),
+          "procedure": $('#procedure').val(),
+          "fullname":  $('#fullname').val()                      
+        },
+        function(data)
+        { 
+          
+          $.each(data, function (key, value) {
+        if(data["OK"])
+        {
+          sweetAlert("Procedure has been forwarded!");
+          loadProcedure();
+        }
+        else
+        {
+          sweetAlert("Procedure failed to be added!");
+        }
+      });
+                                        
+        },'json');
+  }
+  else
+    {sweetAlert("Please select a Procedure!");}
+}
+
+
+function addDiagnosis()
+{
+if($('#diagnosis').val()!= "")
+{
+
+    $.get('/add-diagnosis',
+        {
+          "patient_id": $('#patient_id').val(),
+          "opd_number": $('#opd_number').val(),
+          "diagnosis": $('#diagnosis').val(),
+          "fullname":  $('#fullname').val()                      
+        },
+        function(data)
+        { 
+          
+          $.each(data, function (key, value) {
+        if(data["OK"])
+        {
+          sweetAlert("Diagnosis added!");
+          loadDiagnosis();
+        }
+        else
+        {
+          sweetAlert("Diagnosis failed to be added!");
+        }
+      });
+                                        
+        },'json');
+  }
+  else
+    {sweetAlert("Please select a Diagnosis!");}
+}
+
+
+function addHistory()
+{
+if($('#history').val()!= "")
+{
+
+    $.get('/add-history',
+        {
+          "patient_id": $('#patient_id').val(),
+          "opd_number": $('#opd_number').val(),
+          "history": $('#history').val(),
+          "fullname":  $('#fullname').val()                      
+        },
+        function(data)
+        { 
+          
+          $.each(data, function (key, value) {
+        if(data["OK"])
+        {
+          sweetAlert("History added!");
+          loadHistory();
+        }
+        else
+        {
+          sweetAlert("History failed to be added!");
+        }
+      });
+                                        
+        },'json');
+  }
+  else
+    {sweetAlert("Please select a social or family history!");}
+}
+
+
+
+
+function loadDocumentDetail()
+   {
+         
+        
+        $.get('/load-document-details',
+          {
+            "patient_id": $('#patient_id').val()
+          },
+          function(data)
+          { 
+
+            $('#DocumentTable tbody').empty();
+            $.each(data, function (key, value) 
+            {           
+            $('#DocumentTable tbody').append('<tr><td>'+ value['filename'] +'</td><td>'+ value['original_name'] +'</td><td>'+ value['size'] +'</td><td>'+ value['created_on'] +'</td><td><a a href="/uploads/images/'+ value['filepath'] +'"><i onclick="/uploads/images/'+ value['filepath'] +'" class="fa fa-eye"></i></a></td><td><a a href="#"><i onclick="deleteDocument(\''+value['id']+'\',\''+value['filename']+'\')" class="fa fa-trash-o"></i></a></td></tr>');
+            });
+                                          
+         },'json');      
+    }
+
+
+
+
+function loadMedication()
+   {
+         
+        
+        $.get('/patient-medication',
+          {
+            "opd_number": $('#opd_number').val()
+          },
+          function(data)
+          { 
+
+            $('#drugTable tbody').empty();
+            $.each(data, function (key, value) 
+            {           
+            $('#drugTable tbody').append('<tr><td>1</td><td>'+ value['drug_name'] +'</td><td>'+ value['drug_cost'] +'</td><td><a a href="#"><i onclick="removeMedication(\''+value['id']+'\',\''+value['drug_name']+'\')" class="fa fa-trash-o"></i></a></td></tr>');
+            });
+                                          
+         },'json');      
+    }
+
+
+
+function loadComplaints()
+   {
+         
+        
+        $.get('/patient-complaint',
+          {
+            "opd_number": $('#opd_number').val()
+          },
+          function(data)
+          { 
+
+            $('#complaintTable tbody').empty();
+            $.each(data, function (key, value) 
+            {           
+            $('#complaintTable tbody').append('<tr><td>'+ value['complaint'] +'</td><td>'+ value['period'] +' '+ value['span'] +'</td><td>'+ value['date'] +'</td><td><a a href="#"><i onclick="removecomplain(\''+value['id']+'\',\''+value['complaint']+'\')" class="fa fa-trash-o"></i></a></td></tr>');
+            });
+                                          
+         },'json');      
+    }
+
+
+function loadInvestigation()
+   {
+         
+        
+        $.get('/patient-investigation',
+          {
+            "opd_number": $('#opd_number').val()
+          },
+          function(data)
+          { 
+
+            $('#investigationsTable tbody').empty();
+            $.each(data, function (key, value) 
+            {           
+           $('#investigationsTable tbody').append('<tr><td>'+ value['investigation'] +'</td><td>'+ value['cost'] +'</td><td>'+ value['created_on'] +'</td><td>'+ value['status'] +'</td><td><a a href="/view-lab-request/'+value['id']+'"><i onclick="" class="fa fa-eye"></i></a></td><td><a a href="#"><i onclick="removeinvestigation(\''+value['id']+'\',\''+value['investigation']+'\')" class="fa fa-trash-o"></i></a></td></tr>');
+            });
+                                          
+         },'json');      
+    }
+
+function loadDiagnosis()
+   {
+         
+        
+        $.get('/patient-diagnosis',
+          {
+            "opd_number": $('#opd_number').val()
+          },
+          function(data)
+          { 
+
+            $('#diagnosisTable tbody').empty();
+            $.each(data, function (key, value) 
+            {           
+            $('#diagnosisTable tbody').append('<tr><td>'+ value['diagnosis'] +'</td><td>'+ value['remark'] +'</td><td>'+ value['date'] +'</td><td><a a href="#"><i onclick="removediagnosis(\''+value['id']+'\',\''+value['diagnosis']+'\')" class="fa fa-trash-o"></i></a></td></tr>');
+            });
+                                          
+         },'json');      
+    }
+
+
+      function loadDiagnosisDescription()
+    {
+         
+        
+        $.get('/load-dignosis-description',
+          {
+            "diagnosis_category": $('#diagnosis_category').val()
+          },
+          function(data)
+          { 
+
+            $('#diagnosis').empty();
+            $.each(data, function () 
+            {           
+            $('#diagnosis').append($('<option></option>').val(this['type']).html(this['type']));
+            });
+                                          
+         },'json');      
+    }
+
+
+    function loadProcedure()
+   {
+         
+        
+        $.get('/patient-procedure',
+          {
+            "opd_number": $('#opd_number').val()
+          },
+          function(data)
+          { 
+
+            $('#procedureTable tbody').empty();
+            $.each(data, function (key, value) 
+            {           
+            $('#procedureTable tbody').append('<tr><td>'+ value['procedure'] +'</td><td>'+ value['cost'] +'</td><td>'+ value['created_on'] +'</td><td>'+ value['status'] +'</td><td><a a href="#"><i onclick="removeprocedure(\''+value['id']+'\',\''+value['procedure']+'\')" class="fa fa-trash-o"></i></a></td></tr>');
+            });
+                                          
+         },'json');      
+    }
+
+    function loadHistory()
+   {
+         
+        
+        $.get('/patient-history',
+          {
+            "opd_number": $('#opd_number').val()
+          },
+          function(data)
+          { 
+
+            $('#historyTable tbody').empty();
+            $.each(data, function (key, value) 
+            {           
+            $('#historyTable tbody').append('<tr><td>'+ value['history'] +'</td><td><a a href="#"><i onclick="removeHistory(\''+value['id']+'\',\''+value['history']+'\')" class="fa fa-trash-o"></i></a></td></tr>');
+            });
+                                          
+         },'json');      
+    }
+
+
+    function loadImages()
+   {
+         
+        
+        $.get('/patient-imaging',
+          {
+            "opd_number": $('#opd_number').val()
+          },
+          function(data)
+          { 
+
+            $('#ImageTable tbody').empty();
+            $.each(data, function (key, value) 
+            {           
+            $('#ImageTable tbody').append('<tr><td>'+ value['diagnosis'] +'</td><td>'+ value['remark'] +'</td><td>'+ value['date'] +'</td><td><a a href="#"><i onclick="removediagnosis(\''+value['id']+'\',\''+value['diagnosis']+'\')" class="fa fa-trash-o"></i></a></td></tr>');
+            });
+                                          
+         },'json');      
+    }
+
+
+
+
+  function removeMedication(id,name)
+   {
+      swal({   
+        title: "Are you sure?",   
+        text: "Do you want to remove "+name+" from the prescription list?",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel plx!",   
+        closeOnConfirm: false,   
+        closeOnCancel: false }, 
+        function(isConfirm){   
+          if (isConfirm) 
+          { 
+          $.get('/delete-medication',
+          {
+             "ID": id 
+          },
+          function(data)
+          { 
+            
+            $.each(data, function (key, value) 
+            {
+            if(value == "OK")
+            {
+              swal("Deleted!", name +" was removed from prescription list.", "success"); 
+              loadMedication();
+             }
+            else
+            { 
+              swal("Cancelled", name +" failed to be removed from prescription.", "error");
+              
+            }
+           
+        });
+                                          
+          },'json');    
+           
+             } 
+        else {     
+          swal("Cancelled", name +" failed to be removed from prescription.", "error");   
+        } });
+
+    
+   }
+
+    function removeHistory(id,name)
+   {
+      swal({   
+        title: "Are you sure?",   
+        text: "Do you want to remove "+name+" from the social/family history?",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel plx!",   
+        closeOnConfirm: false,   
+        closeOnCancel: false }, 
+        function(isConfirm){   
+          if (isConfirm) 
+          { 
+          $.get('/delete-history',
+          {
+             "ID": id 
+          },
+          function(data)
+          { 
+            
+            $.each(data, function (key, value) 
+            {
+            if(value == "OK")
+            {
+              swal("Deleted!", name +" was removed from history list.", "success"); 
+              loadHistory();
+             }
+            else
+            { 
+              swal("Cancelled", name +" failed to be removed from history.", "error");
+              
+            }
+           
+        });
+                                          
+          },'json');    
+           
+             } 
+        else {     
+          swal("Cancelled", name +" failed to be removed from history.", "error");   
+        } });
+
+    
+   }
+
+
+
+
+   function removediagnosis(id,name)
+   {
+      swal({   
+        title: "Are you sure?",   
+        text: "Do you want to remove "+name+" from the list?",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel plx!",   
+        closeOnConfirm: false,   
+        closeOnCancel: false }, 
+        function(isConfirm){   
+          if (isConfirm) 
+          { 
+          $.get('/delete-diagnosis',
+          {
+             "ID": id 
+          },
+          function(data)
+          { 
+            
+            $.each(data, function (key, value) 
+            {
+            if(value == "OK")
+            {
+              swal("Deleted!", name +" was removed from list.", "success"); 
+              loadDiagnosis();
+             }
+            else
+            { 
+              swal("Cancelled", name +" failed to be removed from list.", "error");
+              
+            }
+           
+        });
+                                          
+          },'json');    
+           
+             } 
+        else {     
+          swal("Cancelled", name +" failed to be removed from list.", "error");   
+        } });
+   }
+function removeinvestigation(id,name)
+   {
+      swal({   
+        title: "Are you sure?",   
+        text: "Do you want to remove "+name+" from the list?",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel plx!",   
+        closeOnConfirm: false,   
+        closeOnCancel: false }, 
+        function(isConfirm){   
+          if (isConfirm) 
+          { 
+          $.get('/delete-investigation',
+          {
+             "ID": id 
+          },
+          function(data)
+          { 
+            
+            $.each(data, function (key, value) 
+            {
+            if(value == "OK")
+            {
+              swal("Deleted!", name +" was removed from list.", "success"); 
+              loadInvestigation();
+             }
+            else
+            { 
+              swal("Cancelled", name +" failed to be removed from list.", "error");
+              
+            }
+           
+        });
+                                          
+          },'json');    
+           
+             } 
+        else {     
+          swal("Cancelled", name +" failed to be removed from list.", "error");   
+        } });
+
+    
+   }
+
+
+function removeprocedure(id,name)
+   {
+      swal({   
+        title: "Are you sure?",   
+        text: "Do you want to remove "+name+" from the list?",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel plx!",   
+        closeOnConfirm: false,   
+        closeOnCancel: false }, 
+        function(isConfirm){   
+          if (isConfirm) 
+          { 
+          $.get('/delete-procedure',
+          {
+             "ID": id 
+          },
+          function(data)
+          { 
+            
+            $.each(data, function (key, value) 
+            {
+            if(value == "OK")
+            {
+              swal("Deleted!", name +" was removed from list.", "success"); 
+              loadProcedure();
+             }
+            else
+            { 
+              swal("Cancelled", name +" failed to be removed from list.", "error");
+              
+            }
+           
+        });
+                                          
+          },'json');    
+           
+             } 
+        else {     
+          swal("Cancelled", name +" failed to be removed from list.", "error");   
+        } });
+
+    
+   }
+
+   function removecomplain(id,name)
+   {
+
+      swal({   
+        title: "Are you sure?",   
+        text: "Do you want to remove "+name+" from the list?",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel plx!",   
+        closeOnConfirm: false,   
+        closeOnCancel: false }, 
+        function(isConfirm){   
+          if (isConfirm) 
+          { 
+          $.get('/delete-complaint',
+          {
+             "ID": id 
+          },
+          function(data)
+          { 
+            
+            $.each(data, function (key, value) 
+            {
+            if(value == "OK")
+            {
+              swal("Deleted!", name +" was removed from list.", "success"); 
+              loadComplaints();
+             }
+            else
+            { 
+              swal("Cancelled", name +" failed to be removed from list.", "error");
+              
+            }
+           
+        });
+                                          
+          },'json');    
+           
+             } 
+        else {     
+          swal("Cancelled", name +" failed to be removed from list.", "error");   
+        } });
+
+    
+   }
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+  
+  function doDischarge(id,name)
+  {
+
+  swal({
+  title: "Discharging " + name +"!",
+  //text: "Enter discharge comment:",
+  type: "input",
+  showCancelButton: true,
+  closeOnConfirm: false,
+  animation: "slide-from-top",
+  inputPlaceholder: "Enter discharge comment"
+},
+function(inputValue){
+  if (inputValue === false) return false;
+  
+  if (inputValue === "") {
+    swal.showInputError("You need to enter discharge comment!");
+    return false
+  }
+  
+  else
+  {
+    $.get('/process-commission',
+          {
+             "ID": id,
+             "amountpaid": inputValue  
+          },
+          function(data)
+          { 
+            
+            $.each(data, function (key, value) 
+            {
+            if(value == "OK")
+            {
+              swal("Discharged!", name +" was successfully processed.", "success"); 
+              location.reload(true);
+             }
+            else
+            { 
+              swal("Failed", name +" failed to process.", "error");
+              
+            }
+           
+        });
+                                          
+          },'json');    
+  }
+});
+
+}
+
+
+</script>
+
+
+
+
+
+
+ 
+
+
+
+
+  
+  <title>Orion Medical</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+  <link rel="stylesheet" href="./Orion Medical_files/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/animate.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/font.css" type="text/css">
+ <link rel="stylesheet" href="./Orion Medical_files/app.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/fullcalendar.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/datepicker.css" type="text/css">
+ 
+
+
+  <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" href="./Orion Medical_files/select2.css" type="text/css"> 
+  <link rel="stylesheet" href="./Orion Medical_files/theme(1).css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/fuelux.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/sweetalert.css" type="text/css">
+
+  <link rel="stylesheet" href="./Orion Medical_files/font-awesome.min(1).css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/fontello.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/daterangepicker.css" type="text/css">
+
+  <link rel="stylesheet" href="./Orion Medical_files/prettyPhoto.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/toastr.css" type="text/css">
+  <link rel="stylesheet" href="./Orion Medical_files/gallery.css" type="text/css">
+
+
+
+  <section class="vbox">
+<header class="bg-dark dk header navbar navbar-fixed-top-xs">
+      <div class="navbar-header aside-md">
+        <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+          <i class="fa fa-bars"></i>
+        </a>
+        <a href="http://localhost:8000/opd-consultation#" class="navbar-brand" data-toggle="fullscreen"><img src="./Orion Medical_files/primary_visit.png" class="m-r-sm">OrionMD</a>
+        <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
+          <i class="fa fa-cog"></i>
+        </a>
+      </div>
+      <ul class="nav navbar-nav hidden-xs">
+        <li class="dropdown">
+          <a href="http://localhost:8000/opd-consultation#" class="dropdown-toggle dker" data-toggle="dropdown">
+            <i class="fa fa-building-o"></i> 
+            <span class="font-bold">Activity</span>
+          </a> 
+          <section class="dropdown-menu aside-xl on animated fadeInLeft no-borders lt">
+            <div class="wrapper lter m-t-n-xs">
+              <a href="http://localhost:8000/opd-consultation#" class="thumb pull-left m-r">
+                <img src="./Orion Medical_files/avatar_default.jpg" class="img-circle">
+              </a>
+              <div class="clear">
+                <a href="http://localhost:8000/opd-consultation#"><span class="text-white font-bold">Jason</span></a>
+                <small class="block">System Admin</small>
+                <a href="http://localhost:8000/opd-consultation#" class="btn btn-xs btn-success m-t-xs">Upgrade</a>
+              </div>
+            </div>
+            <div class="row m-l-none m-r-none m-b-n-xs text-center">
+              <div class="col-xs-4">
+                <div class="padder-v">
+                  <span class="m-b-xs h4 block text-white">245</span>
+                  <small class="text-muted">Pending Approvals</small>
+                </div>
+              </div>
+              <div class="col-xs-4 dk">
+                <div class="padder-v">
+                  <span class="m-b-xs h4 block text-white">55</span>
+                  <small class="text-muted">Approved Trades</small>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="padder-v">
+                  <span class="m-b-xs h4 block text-white">2,035</span>
+                  <small class="text-muted">Accounts Created</small>
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li>
+         
+        </li>
+      </ul>      
+      <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user">
+        <li class="hidden-xs">
+          <a href="http://localhost:8000/opd-consultation#" class="dropdown-toggle dk" data-toggle="dropdown">
+            <i class="fa fa-bell"></i>
+            <span class="badge badge-sm up bg-danger m-l-n-sm count" style="display: inline-block;">3</span>
+          </a>
+          <section class="dropdown-menu aside-xl">
+            <section class="panel bg-white">
+              <header class="panel-heading b-light bg-light">
+                <strong>You have <span class="count" style="display: inline;">3</span> notifications</strong>
+              </header>
+              <div class="list-group list-group-alt animated fadeInRight"><a href="http://localhost:8000/opd-consultation#" class="media list-group-item" style="display: block;"><span class="pull-left thumb-sm text-center"><i class="fa fa-envelope-o fa-2x text-success"></i></span><span class="media-body block m-b-none">Sophi sent you a email<br><small class="text-muted">1 minutes ago</small></span></a>
+                <a href="http://localhost:8000/opd-consultation#" class="media list-group-item">
+                  <span class="pull-left thumb-sm">
+                    <img src="./Orion Medical_files/avatar.jpg" alt="John said" class="img-circle">
+                  </span>
+                  <span class="media-body block m-b-none">
+                    Use awesome animate.css<br>
+                    <small class="text-muted">10 minutes ago</small>
+                  </span>
+                </a>
+                <a href="http://localhost:8000/opd-consultation#" class="media list-group-item">
+                  <span class="media-body block m-b-none">
+                    1.0 initial released<br>
+                    <small class="text-muted">1 hour ago</small>
+                  </span>
+                </a>
+              </div>
+              <footer class="panel-footer text-sm">
+                <a href="http://localhost:8000/opd-consultation#" class="pull-right"><i class="fa fa-cog"></i></a>
+                <a href="http://localhost:8000/opd-consultation#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+              </footer>
+            </section>
+          </section>
+        </li>
+        <li class="dropdown hidden-xs">
+          <a href="http://localhost:8000/opd-consultation#" class="dropdown-toggle dker" data-toggle="dropdown"><i class="fa fa-fw fa-search"></i></a>
+          <section class="dropdown-menu aside-xl animated fadeInUp">
+            <section class="panel bg-white">
+              <form role="search">
+                <div class="form-group wrapper m-b-none">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn btn-info btn-icon"><i class="fa fa-search"></i></button>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </section>
+          </section>
+        </li>
+       
+        <li class="dropdown">
+          <a href="http://localhost:8000/opd-consultation#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="thumb-sm avatar pull-left">
+              <img src="./Orion Medical_files/avatar_default.jpg">
+            </span>
+            Jason <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu animated fadeInRight">
+            <span class="arrow top"></span>
+            <li>
+              <a href="http://localhost:8000/password/email">Reset Password</a>
+            </li>
+            <li>
+              <a href="http://localhost:8000/profile.html">Profile</a>
+            </li>
+            <li>
+              <a href="http://localhost:8000/opd-consultation#">
+                <span class="badge bg-danger pull-right">3</span>
+                Notifications
+              </a>
+            </li>
+            <li>
+              <a href="http://localhost:8000/opd-consultation#">Help</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="http://localhost:8000/signout">Logout</a>
+            </li>
+          </ul>
+                   </li>
+      </ul>      
+    </header>
+
+
+    
+    <section>
+      <section class="hbox stretch">
+        <!-- .aside -->
+               <aside class="bg-dark lter aside-md hidden-print" id="nav">          
+          <section class="vbox">
+            <header class="header lter text-center clearfix" style="background-color: #f79554">
+              <div class="btn-group">
+               
+              </div>
+            </header>
+            <section class="w-f scrollable">
+              <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 744px;"><div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333" style="overflow: hidden; width: auto; height: 744px;">
+                
+                <!-- nav -->
+                <nav class="nav-primary hidden-xs">
+                  <ul class="nav">
+                    <li class="active">
+                      <a href="http://localhost:8000/dashboard" class="active">
+                        <i class="fa fa-dashboard icon">
+                          <b class="bg-danger"></b>
+                        </i>
+                        <span>Dashboard</span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="http://localhost:8000/opd-consultation#layout">
+                        <i class="fa fa-wheelchair icon">
+                          <b class="bg-warning"></b>
+                        </i>
+                        <span class="pull-right">
+                          <i class="fa fa-angle-down text"></i>
+                          <i class="fa fa-angle-up text-active"></i>
+                        </span>
+                        <span>Records</span>
+                      </a>
+                      <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/active-patients">  
+                          <b class="badge bg-info pull-right"></b>                                                           
+                            <i class="fa fa-angle-right"></i>
+                            <span>Manage Patient</span>
+                          </a>
+                        </li>
+                       
+                      </ul>
+
+                                            <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/new-opd">  
+                          <b class="badge bg-info pull-right"></b>                                                           
+                            <i class="fa fa-angle-right"></i>
+                            <span>OPD</span>
+                          </a>
+                        </li>
+                      </ul>
+                                                                  <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/new-ipd">  
+                          <b class="badge bg-info pull-right"></b>                                                           
+                            <i class="fa fa-angle-right"></i>
+                            <span>IPD</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/event-calendar">  
+                          <b class="badge bg-info pull-right"></b>                                                           
+                            <i class="fa fa-angle-right"></i>
+                            <span>Calendar</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/opd-consultation#">  
+                          <b class="badge bg-info pull-right"></b>                                                           
+                            <i class="fa fa-angle-right"></i>
+                            <span>Resources</span>
+                          </a>
+                        </li>
+                      </ul>
+                       <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/opd-consultation#">  
+                          <b class="badge bg-info pull-right"></b>                                                           
+                            <i class="fa fa-angle-right"></i>
+                            <span>Contacts</span>
+                          </a>
+                        </li>
+                      </ul>
+                       <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/opd-consultation#">  
+                          <b class="badge bg-info pull-right"></b>                                                           
+                            <i class="fa fa-angle-right"></i>
+                            <span>Tasks</span>
+                          </a>
+                        </li>
+                      </ul>
+                       <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/notes-index">  
+                          <b class="badge bg-info pull-right"></b>                                                           
+                            <i class="fa fa-angle-right"></i>
+                            <span>Notes</span>
+                          </a>
+                        </li>
+                      </ul>
+                                          </li>
+                    
+                                        <li>
+                      <a href="http://localhost:8000/nurse-station">
+                        
+                        <i class="fa fa-stethoscope icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Nurse Station</span>
+                      </a>
+                    </li>
+                                                             <li>
+                      <a href="http://localhost:8000/opd-consultation">
+                        
+                        <i class="fa fa-user-md  icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Doctor Station</span>
+                      </a>
+                    </li>
+                                                             <li>
+                      <a href="http://localhost:8000/available-rooms">
+                        
+                        <i class="fa fa-hospital-o icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Room Mgt.</span>
+                      </a>
+                    </li>
+                                                            <li>
+                      <a href="http://localhost:8000/list-of-drugs-avaliable">
+                        
+                        <i class="fa fa-medkit icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Pharmacy</span>
+                      </a>
+                    </li>
+                                                              <li>
+                      <a href="http://localhost:8000/mail.html">
+                        
+                        <i class="fa fa-files-o icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Claims</span>
+                      </a>
+                    </li>
+                                                            <li>
+                      <a href="http://localhost:8000/event-calendar">
+                        <b class="badge bg-danger pull-right">3</b>
+                        <i class="fa fa-stack-exchange icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Appointment</span>
+                      </a>
+                    </li>
+                                                             <li>
+                      <a href="http://localhost:8000/billing-index">
+                       
+                        <i class="fa fa-money icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Billing</span>
+                      </a>
+                    </li>
+                                                            <li>
+                      <a href="http://localhost:8000/dental-review">
+                        
+                        <i class="fa fa-smile-o icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Dental</span>
+                      </a>
+                    </li>
+                                                            <li>
+                      <a href="http://localhost:8000/laboratory">
+                       
+                        <i class="fa fa-plus-square icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Laboratory</span>
+                      </a>
+                    </li>
+                                                            <li>
+                      <a href="http://localhost:8000/dietian-review">
+                       
+                        <i class="fa fa-heart-o icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Dietian</span>
+                      </a>
+                    </li>
+                                                              <li>
+                      <a href="http://localhost:8000/mail.html">
+                        
+                        <i class="fa fa-users icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>HR</span>
+                      </a>
+                    </li>
+                                                            <li>
+                      <a href="http://localhost:8000/imaging">
+                        
+                        <i class="fa fa-paperclip icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Imaging</span>
+                      </a>
+                    </li>
+                                                             <li>
+                      <a href="http://localhost:8000/saved-documents">
+                        
+                        <i class="fa fa-folder-open icon">
+                          <b class="bg-primary dker"></b>
+                        </i>
+                        <span>Documents</span>
+                      </a>
+                    </li>
+                                         <li>
+                      <a href="http://localhost:8000/opd-consultation#pages">
+                        <i class="fa fa-file-text icon">
+                          <b class="bg-primary"></b>
+                        </i>
+                        <span class="pull-right">
+                          <i class="fa fa-angle-down text"></i>
+                          <i class="fa fa-angle-up text-active"></i>
+                        </span>
+                        <span>Reports</span>
+                      </a>
+                      <ul class="nav lt">
+                        
+                        <li>
+                          <a href="http://localhost:8000/medical-reports">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Medical</span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="http://localhost:8000/patient-reports">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Patient</span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="http://localhost:8000/financial-reports">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Financial</span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="http://localhost:8000/billing-reports">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Billing</span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="http://localhost:8000/purchases-reports">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Purchases</span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="http://localhost:8000/company-reports">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Company</span>
+                          </a>
+                        </li>
+                       
+                      </ul>
+                    </li>
+                                      <li>
+                      <a href="http://localhost:8000/opd-consultation#pages">
+                        <i class="fa fa-file-text icon">
+                          <b class="bg-primary"></b>
+                        </i>
+                        <span class="pull-right">
+                          <i class="fa fa-angle-down text"></i>
+                          <i class="fa fa-angle-up text-active"></i>
+                        </span>
+                        <span>Setup</span>
+                      </a>
+                      <ul class="nav lt">
+                        <li>
+                          <a href="http://localhost:8000/add-template">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Medical Templates</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="http://localhost:8000/reporting">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Banking</span>
+                          </a>
+                        </li>
+                         <li>
+                          <a href="http://localhost:8000/reporting">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Communication</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="http://localhost:8000/company.index">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>Company</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="http://localhost:8000/manage-users">                                                        
+                            <i class="fa fa-angle-right"></i>
+                            <span>User Management</span>
+                          </a>
+                        </li>
+                       
+                      </ul>
+                    </li>
+                                        <li>
+                  </li></ul>
+                </nav>
+                <!-- / nav -->
+              </div><div class="slimScrollBar" style="background: rgb(51, 51, 51); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 0px; height: 744px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 0px;"></div></div>
+            </section>
+            
+            <footer class="footer lt hidden-xs b-t b-dark">
+              <div id="chat" class="dropup">
+                <section class="dropdown-menu on aside-md m-l-n">
+                  <section class="panel bg-white">
+                    <header class="panel-heading b-b b-light">Active chats</header>
+                    <div class="panel-body animated fadeInRight">
+                      <p class="text-sm">No active chats.</p>
+                      <p><a href="http://localhost:8000/opd-consultation#" class="btn btn-sm btn-default">Start a chat</a></p>
+                    </div>
+                  </section>
+                </section>
+              </div>
+              <div id="invite" class="dropup">                
+                <section class="dropdown-menu on aside-md m-l-n">
+                  <section class="panel bg-white">
+                    <header class="panel-heading b-b b-light">
+                      Jason <i class="fa fa-circle text-success"></i>
+                    </header>
+                    <div class="panel-body animated fadeInRight">
+                      <p class="text-sm">No contacts in your lists.</p>
+                      <p><a href="http://localhost:8000/opd-consultation#" class="btn btn-sm btn-facebook"><i class="fa fa-fw fa-facebook"></i> Invite from Facebook</a></p>
+                    </div>
+                  </section>
+                </section>
+              </div>
+              <a href="http://localhost:8000/opd-consultation#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon">
+                <i class="fa fa-angle-left text"></i>
+                <i class="fa fa-angle-right text-active"></i>
+              </a>
+              <div class="btn-group hidden-nav-xs">
+                <button type="button" title="Chats" class="btn btn-icon btn-sm btn-dark" data-toggle="dropdown" data-target="#chat"><i class="fa fa-comment-o"></i></button>
+                <button type="button" title="Contacts" class="btn btn-icon btn-sm btn-dark" data-toggle="dropdown" data-target="#invite"><i class="fa fa-facebook"></i></button>
+              </div>
+            </footer>
+          </section>
+        </aside>
+          <!-- /.aside -->
+        <section id="content">
+                 <section class="vbox">          
+           <section id="content">
+          <section class="vbox">          
+            <section class="scrollable padder">
+              <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li><a href="http://localhost:8000/index.html"><i class="fa fa-home"></i> Home </a></li>
+                <li class="active"> Diagnostic Center </li>
+              </ul>
+             
+             <section class="panel panel-default">
+                <div class="row m-l-none m-r-none bg-light lter">
+                  <div class="col-sm-6 col-md-3 padder-v b-r b-light">
+                    <span class="fa-stack fa-2x pull-left m-r-sm">
+                      <i class="fa fa-circle fa-stack-2x text-info"></i>
+                      <i class="fa fa-coffee fa-stack-1x text-white"></i>
+                    </span>
+                    <a class="clear" href="http://localhost:8000/opd-consultation#opd-consultation" data-toggle="modal">
+                      <span class="h3 block m-t-xs"><strong>0</strong></span>
+                      <small class="text-muted text-uc">Waiting Room</small>
+                    </a>
+                  </div>
+                    <div class="col-sm-6 col-md-3 padder-v b-r b-light lt">
+                    <span class="fa-stack fa-2x pull-left m-r-sm">
+                      <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                      <i class="fa fa-stethoscope fa-stack-1x text-white"></i>
+                      </span>
+                    
+                    <a class="clear" href="http://localhost:8000/opd-consultation#review-consultation">
+                      <span class="h3 block m-t-xs"><strong id="bugs">0</strong></span>
+                      <small class="text-muted text-uc">Reviewed Patient</small>
+                    </a>
+                  </div>
+                    <div class="col-sm-6 col-md-3 padder-v b-r b-light">
+                    <span class="fa-stack fa-2x pull-left m-r-sm">
+                      <i class="fa fa-circle fa-stack-2x text-dark"></i>
+                      <i class="fa fa-h-square fa-stack-1x text-white"></i>
+                    </span>
+                    <a class="clear" href="http://localhost:8000/opd-consultation#">
+                      <span class="h3 block m-t-xs"><strong>0</strong></span>
+                      <small class="text-muted text-uc">Inpatient</small>
+                    </a>
+                  </div>
+                   <div class="col-sm-6 col-md-3 padder-v b-r b-light lt">
+                    <span class="fa-stack fa-2x pull-left m-r-sm">
+                      <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                      <i class="fa  fa-calendar fa-stack-1x text-white"></i>
+                      </span>
+                    
+                    <a class="clear" href="http://localhost:8000/available-labs">
+                      <span class="h3 block m-t-xs"><strong id="bugs">0</strong></span>
+                      <small class="text-muted text-uc">Appointments</small>
+                    </a>
+                  </div>
+
+                 
+                </div>
+              </section>
+
+
+              <div class="row">
+
+                <div class="col-md-12">
+ 
+                  <section class="panel panel-default">
+                  <header class="panel-heading">
+                    <form action="http://localhost:8000/find-test-result" method="GET">
+                      <div class="input-group text-ms">
+                        <input type="text" name="search" id="search" class="input-sm form-control" placeholder="Search by patient, test, status">
+                        <div class="input-group-btn">
+                           <button class="btn btn-sm btn-success" type="submit">Search!</button>
+                        </div>
+                      </div>
+                      </form>
+                    </header>
+                    <div class="table-responsive">
+
+                      <table class="table table-striped m-b-none text-sm" width="100%">
+                         <thead>
+                          <tr>                        
+                          
+                             <th>Visit # </th>
+                            <th>Patient #</th>
+                            <th>Patient Name</th>
+                            <th>Visit Date</th>
+                            <th>Doctor-In-Charge</th>
+                            <th>Visit Type</th>
+                            <th>Consultation Type</th>
+                            <th width="30"></th>
+                            <th width="30"></th>
+                            <th width="30"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                                                  <tr>
+                       
+                             <td><a href="http://localhost:8000/patient-profile/P7563871311" id="edit" name="edit" data-toggle="modal" alt="edit">V00016</a></td>
+                            <td>P7563871311</td>
+                            <td>Kingsley Philips</td>
+                            <td>2017-03-20 10:11:42</td>
+                             <td>Dr. Catherine Adu-Sarkodee</td>
+                             <td>First Visit</td>
+                              <td>DENTAL CONSULTATION</td>
+                              
+                                                                                          <td><a href="http://localhost:8000/dental-review/V00016" onclick="getDetails(&#39;7&#39;,&#39;P7563871311&#39;)" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-stethoscope"> </i>  </a></td>
+                              
+
+                             <td><a href="http://localhost:8000/patient-profile/P7563871311" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-folder-open"> </i>  </a></td>
+                               <td>
+                              <a href="http://localhost:8000/opd-consultation#" class="active" onclick="doDischarge(&#39;7&#39;,&#39;Kingsley Philips&#39;)" data-toggle="class"><i class="fa fa-unlock"> </i> </a>
+                            </td>
+                            
+
+                          </tr>
+                                                   <tr>
+                       
+                             <td><a href="http://localhost:8000/patient-profile/C5814893230" id="edit" name="edit" data-toggle="modal" alt="edit">V00015</a></td>
+                            <td>C5814893230</td>
+                            <td>Eva Renner</td>
+                            <td>2017-03-20 09:24:03</td>
+                             <td>Dr. Catherine Adu-Sarkodee</td>
+                             <td>First Visit</td>
+                              <td>GP CONSULTATION-NIGHT(8PM-5AM)</td>
+                              
+                                                                                          <td><a href="http://localhost:8000/consultation/V00015" onclick="getDetails(&#39;6&#39;,&#39;C5814893230&#39;)" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-stethoscope"> </i>  </a></td>
+                              
+
+                             <td><a href="http://localhost:8000/patient-profile/C5814893230" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-folder-open"> </i>  </a></td>
+                               <td>
+                              <a href="http://localhost:8000/opd-consultation#" class="active" onclick="doDischarge(&#39;6&#39;,&#39;Eva Renner&#39;)" data-toggle="class"><i class="fa fa-unlock"> </i> </a>
+                            </td>
+                            
+
+                          </tr>
+                                                   <tr>
+                       
+                             <td><a href="http://localhost:8000/patient-profile/C5814893230" id="edit" name="edit" data-toggle="modal" alt="edit">V00014</a></td>
+                            <td>C5814893230</td>
+                            <td>Eva Renner</td>
+                            <td>2017-03-20 09:23:07</td>
+                             <td>Dr. Catherine Adu-Sarkodee</td>
+                             <td>First Visit</td>
+                              <td>GP CONSULTATION</td>
+                              
+                                                                                          <td><a href="http://localhost:8000/consultation/V00014" onclick="getDetails(&#39;5&#39;,&#39;C5814893230&#39;)" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-stethoscope"> </i>  </a></td>
+                              
+
+                             <td><a href="http://localhost:8000/patient-profile/C5814893230" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-folder-open"> </i>  </a></td>
+                               <td>
+                              <a href="http://localhost:8000/opd-consultation#" class="active" onclick="doDischarge(&#39;5&#39;,&#39;Eva Renner&#39;)" data-toggle="class"><i class="fa fa-unlock"> </i> </a>
+                            </td>
+                            
+
+                          </tr>
+                                                   <tr>
+                       
+                             <td><a href="http://localhost:8000/patient-profile/P5028300856" id="edit" name="edit" data-toggle="modal" alt="edit">V00013</a></td>
+                            <td>P5028300856</td>
+                            <td>Apo Anthony Lartey</td>
+                            <td>2017-03-17 12:20:52</td>
+                             <td>Dr. Catherine Adu-Sarkodee</td>
+                             <td>Subsequent Visit</td>
+                              <td>DENTAL CONSULTATION</td>
+                              
+                                                                                          <td><a href="http://localhost:8000/dental-review/V00013" onclick="getDetails(&#39;4&#39;,&#39;P5028300856&#39;)" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-stethoscope"> </i>  </a></td>
+                              
+
+                             <td><a href="http://localhost:8000/patient-profile/P5028300856" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-folder-open"> </i>  </a></td>
+                               <td>
+                              <a href="http://localhost:8000/opd-consultation#" class="active" onclick="doDischarge(&#39;4&#39;,&#39;Apo Anthony Lartey&#39;)" data-toggle="class"><i class="fa fa-unlock"> </i> </a>
+                            </td>
+                            
+
+                          </tr>
+                                                   <tr>
+                       
+                             <td><a href="http://localhost:8000/patient-profile/8407417432" id="edit" name="edit" data-toggle="modal" alt="edit">V00012</a></td>
+                            <td>8407417432</td>
+                            <td>Prof. Chichi Anuforo</td>
+                            <td>2017-03-16 16:10:46</td>
+                             <td>Dr. Catherine Adu-Sarkodee</td>
+                             <td>First Visit</td>
+                              <td>GP CONSULTATION</td>
+                              
+                                                                                          <td><a href="http://localhost:8000/consultation/V00012" onclick="getDetails(&#39;3&#39;,&#39;8407417432&#39;)" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-stethoscope"> </i>  </a></td>
+                              
+
+                             <td><a href="http://localhost:8000/patient-profile/8407417432" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-folder-open"> </i>  </a></td>
+                               <td>
+                              <a href="http://localhost:8000/opd-consultation#" class="active" onclick="doDischarge(&#39;3&#39;,&#39;Prof. Chichi Anuforo&#39;)" data-toggle="class"><i class="fa fa-unlock"> </i> </a>
+                            </td>
+                            
+
+                          </tr>
+                                                   <tr>
+                       
+                             <td><a href="http://localhost:8000/patient-profile/P7563871311" id="edit" name="edit" data-toggle="modal" alt="edit">V00011</a></td>
+                            <td>P7563871311</td>
+                            <td>Kingsley Philips</td>
+                            <td>2017-03-16 16:10:32</td>
+                             <td>Dr. Catherine Adu-Sarkodee</td>
+                             <td>First Visit</td>
+                              <td>GP CONSULTATION</td>
+                              
+                                                                                          <td><a href="http://localhost:8000/consultation/V00011" onclick="getDetails(&#39;2&#39;,&#39;P7563871311&#39;)" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-stethoscope"> </i>  </a></td>
+                              
+
+                             <td><a href="http://localhost:8000/patient-profile/P7563871311" id="edit" name="edit" data-toggle="modal" alt="edit"><i class="fa fa-folder-open"> </i>  </a></td>
+                               <td>
+                              <a href="http://localhost:8000/opd-consultation#" class="active" onclick="doDischarge(&#39;2&#39;,&#39;Kingsley Philips&#39;)" data-toggle="class"><i class="fa fa-unlock"> </i> </a>
+                            </td>
+                            
+
+                          </tr>
+                                                 </tbody>
+ 
+                      </table>
+                    </div>
+                  </section>
+         
+                </div>
+              </div>
+
+            </section>
+             <footer class="footer bg-white b-t">
+                  
+
+                  <div class="row text-center-xs">
+                    <div class="col-md-6 hidden-sm">
+                      <p class="text-muted m-t pull-center">
+                      <span class="badge badge-info">Record(s) Found : 6 Patients</span>
+                      </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-right text-center-xs">                
+                     
+                        
+                        
+                    </div>
+                  </div>
+
+
+                </footer>
+          </section>
+          <a href="http://localhost:8000/opd-consultation#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+        </section>
+
+
+          </section>
+          <a href="http://localhost:8000/opd-consultation#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+        </section>
+        <aside class="bg-light lter b-l aside-md hide" id="notes">
+          <div class="wrapper">Notification</div>
+        </aside>
+      </section>
+    </section>
+  </section>
+<!-- combodate -->
+<script src="./Orion Medical_files/moment.min.js"></script>
+<script src="./Orion Medical_files/combodate.js"></script>
+
+  <script src="./Orion Medical_files/jquery.min.js"></script>
+ 
+  <!-- Bootstrap -->
+  <script src="./Orion Medical_files/bootstrap.js"></script>
+  <!-- App -->
+<script src="./Orion Medical_files/moment.js"></script>
+<script src="./Orion Medical_files/daterangepicker.js"></script>
+
+  <script src="./Orion Medical_files/app.js"></script>
+  <script src="./Orion Medical_files/sweetalert.min.js"></script>
+  <script src="./Orion Medical_files/app.plugin.js"></script>
+  <script src="./Orion Medical_files/jquery.slimscroll.min.js"></script>
+  <script src="./Orion Medical_files/jquery.easy-pie-chart.js"></script>
+  <script src="./Orion Medical_files/jquery.sparkline.min.js"></script>
+  <script src="./Orion Medical_files/jquery.flot.min.js"></script>
+  <script src="./Orion Medical_files/jquery.flot.tooltip.min.js"></script>
+  <script src="./Orion Medical_files/jquery.flot.resize.js"></script>
+  <script src="./Orion Medical_files/jquery.flot.grow.js"></script>
+  <script src="./Orion Medical_files/demo.js"></script>
+
+<script src="./Orion Medical_files/select2.min.js"></script> 
+<script src="./Orion Medical_files/nicEdit.js"></script> 
+<script src="./Orion Medical_files/parsley.min.js"></script>
+<script src="./Orion Medical_files/fuelux.js"></script>
+<script src="./Orion Medical_files/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="./Orion Medical_files/jquery.ui.touch-punch.min.js"></script>
+<script src="./Orion Medical_files/fullcalendar.min.js"></script>
+<script src="./Orion Medical_files/toastr.js"></script> 
+<script src="./Orion Medical_files/jquery.tinymce.min.js"></script>
+<script src="./Orion Medical_files/tinymce.min.js"></script>
+<script src="./Orion Medical_files/jquery.hotkeys.js"></script>
+<script src="./Orion Medical_files/bootstrap-wysiwyg.js"></script>
+<script src="./Orion Medical_files/demo(1).js"></script>
+
+<script src="./Orion Medical_files/underscore-min.js"></script>
+<script src="./Orion Medical_files/jquery.prettyPhoto.js"></script>  
+<script src="./Orion Medical_files/jquery.grid-a-licious.min.js"></script>
+
+<script src="./Orion Medical_files/notes.js"></script>
+
+<script>
+
+  
+  
+  
+  
+</script>
+
+
+
+
+
+</body></html>

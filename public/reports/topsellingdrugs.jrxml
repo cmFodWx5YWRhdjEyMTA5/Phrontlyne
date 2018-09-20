@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prescriptions" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="14e734e8-069b-4a65-abc3-870791739943">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="start_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="end_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     prescriptions.`id` AS prescriptions_id,
+     prescriptions.`patientid` AS prescriptions_patientid,
+     prescriptions.`visitid` AS prescriptions_visitid,
+     prescriptions.`drug_name` AS prescriptions_drug_name,
+     prescriptions.`drug_cost` AS prescriptions_drug_cost,
+     prescriptions.`drug_quantity` AS prescriptions_drug_quantity,
+     prescriptions.`drug_cost` * prescriptions.`drug_quantity` as price,
+     prescriptions.`drug_dosage` AS prescriptions_drug_dosage,
+     prescriptions.`drug_application` AS prescriptions_drug_application,
+     prescriptions.`created_on` AS prescriptions_created_on,
+     prescriptions.`created_by` AS prescriptions_created_by,
+     prescriptions.`status` AS prescriptions_status,
+     prescriptions.`patient_name` AS prescriptions_patient_name,
+     prescriptions.`date_dispensed` AS prescriptions_date_dispensed,
+     prescriptions.`dispensed_by` AS prescriptions_dispensed_by,
+     prescriptions.`pay_status` AS prescriptions_pay_status
+FROM
+     `prescriptions` prescriptions
+where
+    (prescriptions.`created_on` BETWEEN $P{start_date} and $P{end_date})
+order by prescriptions.`drug_quantity` asc]]>
+	</queryString>
+	<field name="prescriptions_id" class="java.lang.Long"/>
+	<field name="prescriptions_patientid" class="java.lang.String"/>
+	<field name="prescriptions_visitid" class="java.lang.String"/>
+	<field name="prescriptions_drug_name" class="java.lang.String"/>
+	<field name="prescriptions_drug_cost" class="java.lang.Double"/>
+	<field name="prescriptions_drug_quantity" class="java.lang.Integer"/>
+	<field name="price" class="java.lang.Double"/>
+	<field name="prescriptions_drug_dosage" class="java.lang.String"/>
+	<field name="prescriptions_drug_application" class="java.lang.String"/>
+	<field name="prescriptions_created_on" class="java.sql.Timestamp"/>
+	<field name="prescriptions_created_by" class="java.lang.String"/>
+	<field name="prescriptions_status" class="java.lang.String"/>
+	<field name="prescriptions_patient_name" class="java.lang.String"/>
+	<field name="prescriptions_date_dispensed" class="java.sql.Timestamp"/>
+	<field name="prescriptions_dispensed_by" class="java.lang.String"/>
+	<field name="prescriptions_pay_status" class="java.lang.String"/>
+	<sortField name="prescriptions_drug_quantity"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="4" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="3" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="1" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="319" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="802" height="319" uuid="c0ac01da-d920-40f6-9078-59417ba9732c"/>
+				<rowGroup name="prescriptions_drug_name" width="174" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{prescriptions_drug_name}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="173" height="25" uuid="d9592f90-1cdd-48cc-b11f-6ba9fb5010a1"/>
+								<textElement textAlignment="Left">
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{prescriptions_drug_name}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="173" height="25" uuid="8515dabf-c607-4529-9807-6df5b2a60747"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[Total prescriptions_drug_name]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="prescriptions_status" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{prescriptions_status}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="66" height="30" uuid="3db999a6-0c7e-473c-a749-afef5f327299"/>
+								<textElement>
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{prescriptions_status}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="69" height="30" uuid="fecba4d5-22a3-4a3c-b38d-02aa6a80afa6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="prescriptions_drug_quantityMeasure" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{prescriptions_drug_quantity}]]></measureExpression>
+				</measure>
+				<crosstabCell width="72" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="66" height="25" uuid="3aeb761a-9100-4e97-b8c3-e4879e3d575d"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{prescriptions_drug_quantityMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="72" height="25" rowTotalGroup="prescriptions_drug_name">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="66" height="25" uuid="4daf727d-ccff-4058-9795-89030681d725"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{prescriptions_drug_quantityMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="75" columnTotalGroup="prescriptions_status">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="69" height="25" uuid="038f0983-c68c-45d6-80f2-7e3ff3bc24b9"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{prescriptions_drug_quantityMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="75" rowTotalGroup="prescriptions_drug_name" columnTotalGroup="prescriptions_status">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="69" height="25" uuid="efdc22f9-3876-4b94-a860-ab9991816ae1"/>
+							<textElement>
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{prescriptions_drug_quantityMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

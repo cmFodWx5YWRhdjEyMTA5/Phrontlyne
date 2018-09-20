@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="visits" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b74f828c-ffd2-459d-9492-0157f03f1f30">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="consultation_type" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="doctor" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="visit_desc" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="payerstatus" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="provider" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="start_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="end_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     admissions.`id` AS admissions_id,
+     admissions.`opd_number` AS admissions_opd_number,
+     admissions.`patient_id` AS admissions_patient_id,
+     admissions.`name` AS admissions_name,
+     admissions.`referal_doctor` AS admissions_referal_doctor,
+     admissions.`department` AS admissions_department,
+     admissions.`consultation_type` AS admissions_consultation_type,
+     admissions.`created_on` AS admissions_created_on,
+     admissions.`created_by` AS admissions_created_by,
+     admissions.`updated_on` AS admissions_updated_on,
+     admissions.`updated_by` AS admissions_updated_by,
+     admissions.`status` AS admissions_status,
+     admissions.`visit_type` AS admissions_visit_type,
+     admissions.`billable` AS admissions_billable,
+     admissions.`bed_id` AS admissions_bed_id,
+     admissions.`ward_id` AS admissions_ward_id,
+     admissions.`payercode` AS admissions_payercode,
+     admissions.`location` AS admissions_location,
+     admissions.`chief_complaint` AS admissions_chief_complaint,
+     admissions.`care_provider` AS admissions_care_provider,
+     admissions.`checkout_time` AS admissions_checkout_time,
+     admissions.`uuid` AS admissions_uuid,
+     admissions.`deleted_at` AS admissions_deleted_at
+FROM
+     `admissions` admissions
+WHERE
+    (admissions.`created_on` BETWEEN $P{start_date} and $P{end_date})
+    and
+     ($P{consultation_type}= 'All'
+     or admissions.`consultation_type` = $P{consultation_type})
+     and ($P{doctor} = 'All'
+     or admissions.`referal_doctor` = $P{doctor})
+     and ($P{visit_desc} = 'All'
+     or  admissions.`visit_type`= $P{visit_desc})
+     and ( $P{payerstatus}= 'All'
+     or admissions.`payercode` = $P{payerstatus})
+     and ( $P{provider}= 'All'
+     or admissions.`care_provider` = $P{provider})]]>
+	</queryString>
+	<field name="admissions_id" class="java.lang.Integer"/>
+	<field name="admissions_opd_number" class="java.lang.String"/>
+	<field name="admissions_patient_id" class="java.lang.String"/>
+	<field name="admissions_name" class="java.lang.String"/>
+	<field name="admissions_referal_doctor" class="java.lang.String"/>
+	<field name="admissions_department" class="java.lang.String"/>
+	<field name="admissions_consultation_type" class="java.lang.String"/>
+	<field name="admissions_created_on" class="java.sql.Timestamp"/>
+	<field name="admissions_created_by" class="java.lang.String"/>
+	<field name="admissions_updated_on" class="java.sql.Date"/>
+	<field name="admissions_updated_by" class="java.lang.String"/>
+	<field name="admissions_status" class="java.lang.String"/>
+	<field name="admissions_visit_type" class="java.lang.String"/>
+	<field name="admissions_billable" class="java.lang.String"/>
+	<field name="admissions_bed_id" class="java.lang.Integer"/>
+	<field name="admissions_ward_id" class="java.lang.Integer"/>
+	<field name="admissions_payercode" class="java.lang.String"/>
+	<field name="admissions_location" class="java.lang.String"/>
+	<field name="admissions_chief_complaint" class="java.lang.String"/>
+	<field name="admissions_care_provider" class="java.lang.String"/>
+	<field name="admissions_checkout_time" class="java.sql.Timestamp"/>
+	<field name="admissions_uuid" class="java.lang.String"/>
+	<field name="admissions_deleted_at" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image>
+				<reportElement x="549" y="21" width="189" height="71" uuid="cd06ef1e-c037-4db0-bfe6-0b6b248d49a5"/>
+				<imageExpression><![CDATA["gileadlogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="11" y="72" width="59" height="20" uuid="94d1dc6b-27fa-4980-97fb-6922afa9fec1"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="93" width="59" height="20" uuid="021d02a9-224e-4314-a93c-6a236325f5c7"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payer Code :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="32" width="28" height="20" uuid="5505ba8b-9521-446f-9502-c19dceec0fe6"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="12" width="309" height="20" uuid="1806bf53-59ba-4b11-9576-0a92bcaac239"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Visit Statistics For Doctors]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="52" width="28" height="20" uuid="3060a167-f574-4a9d-8bf4-7f6f092b7a2e"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To :]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="70" y="32" width="250" height="20" uuid="87abb28e-66e0-4a3a-962e-af8d83a5c08f"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{start_date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="70" y="52" width="250" height="20" uuid="9a0787ad-8862-4397-8e1d-7df8a74f7ffa"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{end_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="73" width="250" height="20" uuid="fe6d654d-36a4-42a4-8d7a-5765414e73fd"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{doctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="93" width="250" height="20" uuid="ba07a532-3a76-4cfc-8267-3c4ae1562dc4"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{payerstatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="13" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="305" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="752" height="305" uuid="7e230f38-001f-42a1-a521-d6d405a43b87"/>
+				<rowGroup name="admissions_referal_doctor" width="184" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{admissions_referal_doctor}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="184" height="25" uuid="69a7c7fa-7dd6-431a-a987-49e3d42920d9"/>
+								<textElement verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{admissions_referal_doctor}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="184" height="25" uuid="ac0da60c-bff9-4357-98b7-49f8b67fb9bb"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[Total Visits to Doctors]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="admissions_payercode" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{admissions_payercode}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="107" height="30" uuid="b8465e55-5b2e-44c1-972a-eabb805e17f4"/>
+								<textElement verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{admissions_payercode}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="105" height="30" uuid="3f017ee7-9738-4c14-83a0-e5c5fdf56a96"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total ]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="admissions_opd_numberMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{admissions_opd_number}]]></measureExpression>
+				</measure>
+				<crosstabCell width="107" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="107" height="25" uuid="a43e0bf4-b8bf-46ba-938b-09794251e7af"/>
+							<textElement verticalAlignment="Middle">
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{admissions_opd_numberMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="107" height="25" rowTotalGroup="admissions_referal_doctor">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="107" height="25" uuid="7147f7c9-dcd2-4f34-8975-4ae476001be1"/>
+							<textElement verticalAlignment="Middle">
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{admissions_opd_numberMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="105" columnTotalGroup="admissions_payercode">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="105" height="25" uuid="3d54ebd0-8039-4310-a1ae-45c1566542a5"/>
+							<textElement verticalAlignment="Middle">
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{admissions_opd_numberMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="105" rowTotalGroup="admissions_referal_doctor" columnTotalGroup="admissions_payercode">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="105" height="25" uuid="cfe3642b-ea6b-4458-b942-0b9342ec94fe"/>
+							<textElement verticalAlignment="Middle">
+								<font size="7"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{admissions_opd_numberMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>
